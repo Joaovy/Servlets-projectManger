@@ -1,7 +1,7 @@
 package org.example;
 
 import org.apache.catalina.startup.Tomcat;
-import org.example.HelloServlet;
+import org.example.servlet.HelloServlet;
 
 import java.io.File;
 
@@ -17,6 +17,9 @@ public class Main {
         // Registra o servlet manualmente
         tomcat.addServlet("", "helloServlet", new HelloServlet());
         context.addServletMappingDecoded("/hello", "helloServlet");
+
+        tomcat.addServlet("", "NewCompanyServlet", new org.example.servlet.NewCompanyServlet());
+        context.addServletMappingDecoded("/novaEmpresa", "NewCompanyServlet");
 
         tomcat.getConnector();
         tomcat.start();

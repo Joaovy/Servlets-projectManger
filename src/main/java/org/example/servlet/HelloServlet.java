@@ -1,4 +1,4 @@
-package org.example;
+package org.example.servlet;
 
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
