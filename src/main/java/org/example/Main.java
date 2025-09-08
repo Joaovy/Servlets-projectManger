@@ -21,6 +21,9 @@ public class Main {
         tomcat.addServlet("", "NewCompanyServlet", new org.example.servlet.NewCompanyServlet());
         context.addServletMappingDecoded("/novaEmpresa", "NewCompanyServlet");
 
+        tomcat.addServlet("", "ListCompanyServlet", new org.example.servlet.ListCompanysServlets());
+        context.addServletMappingDecoded("/listaEmpresas", "ListCompanyServlet");
+
         tomcat.getConnector();
         tomcat.start();
         System.out.println("Servidor rodando em http://localhost:" + port);
