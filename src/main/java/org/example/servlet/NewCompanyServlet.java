@@ -1,5 +1,8 @@
 package org.example.servlet;
 
+import org.example.Banco;
+import org.example.Company;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +24,11 @@ public class NewCompanyServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String nameCompany = request.getParameter("nome");
+        Company company = new Company();
+        company.setName(nameCompany);
+
+        Banco banco = new Banco();
+        banco.add(company);
 
         out.println("<html><body>EMPRESA CADASTRADA COM SUCESSO</body></html>");
         out.println("<html><body>EMPRESA = "+ nameCompany +"</body></html>");
