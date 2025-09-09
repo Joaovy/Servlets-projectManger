@@ -4,6 +4,7 @@ package org.example.servlet;
 import org.example.Banco;
 import org.example.Company;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,19 +28,10 @@ public class ListCompanysServlets extends HttpServlet {
         Banco banco = new Banco();
         List<Company> list = banco.getListCompany();
 
-        PrintWriter out = response.getWriter();
+        request.setAttribute("companys", list);
 
-        out.println("<html><body>");
-        out.println("<h1>Lista de Empresas</h1>");
-        out.println("<ul>");
-        for (Company company : list) {
-            out.println("<li>" + company.getName() + "</li>");
-        }
-        out.println("<ul>");
-        out.println("<a href='index.html'>Voltar</a>");
-        out.println("<html><body>");
-
-
+        RequestDispatcher rd = request.getRequestDispatcher("/listCompany.jsp");
+        rd.forward(request, response);
 
     }
 }
