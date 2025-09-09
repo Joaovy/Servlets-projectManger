@@ -1,8 +1,11 @@
 package org.example.servlet;
 
+import org.apache.catalina.connector.Request;
 import org.example.Banco;
 import org.example.Company;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +21,7 @@ public class NewCompanyServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         System.out.println("Cadastrando nova empresa");
         PrintWriter out = response.getWriter();
@@ -30,10 +33,10 @@ public class NewCompanyServlet extends HttpServlet {
         Banco banco = new Banco();
         banco.add(company);
 
-        out.println("<html><body>EMPRESA CADASTRADA COM SUCESSO</body></html>");
-        out.println("<html><body>EMPRESA = "+ nameCompany +"</body></html>");
-
-
+        // chamando o JSP
+        RequestDispatcher rd = request.getRequestDispatcher("/newCompany.jsp");
+        request.setAttribute("company", company.getName());
+        rd.forward(request, response);
 
     }
 }

@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    String nomeEmpresa = "Alura";
-    out.println(nomeEmpresa);
+    String nomeEmpresa = (String)request.getAttribute("company");
 %>
 
 <html lang="pt-BR">
