@@ -1,8 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%
-    String nomeEmpresa = (String)request.getAttribute("company");
-%>
 
 <html lang="pt-BR">
 <head>
@@ -10,7 +5,7 @@
     <title>Página de nova empresa </title>
 </head>
         <body>
-                Empresa <%= nomeEmpresa %> cadastrada com sucesso!
+                Empresa ${ company } cadastrada com sucesso!
         </body>
 </html>
 
